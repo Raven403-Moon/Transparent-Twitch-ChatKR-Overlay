@@ -1,4 +1,4 @@
-﻿using Jot;
+using Jot;
 using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.Wpf;
 using Newtonsoft.Json;
@@ -453,16 +453,16 @@ namespace TransparentTwitchChatWPF
             {
                 string urlStatus = string.IsNullOrEmpty(url) ? "<Empty>" : url;
                 Debug.WriteLine($"Failed to navigate to custom chat URL: {urlStatus}\n{ex.Message}\n{ex.StackTrace}");
-                MessageBox.Show($"Failed to navigate to the custom chat URL. Please check the URL and try again.\n\nUrl: '{urlStatus}'", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"사용자 지정 채팅 URL로 이동하지 못했습니다. URL을 확인하고 다시 시도해 주세요.\n\nUrl: '{urlStatus}'", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
 
                 try
                 {
                     webView.CoreWebView2.NavigateToString($"""
                         <html>
-                            <head><title>Error</title></head>
+                            <head><title>오류</title></head>
                             <body style='color: #D3D3D3; background-color: #2B2B2B; font-family: sans-serif; text-align: center; padding-top: 50px;'>
-                                <h1>Something went wrong</h1>
-                                <p>Could not load the requested page @: '{url}'</p>
+                                <h1>문제가 발생했습니다</h1>
+                                <p>요청한 페이지를 불러올 수 없습니다: '{url}'</p>
                             </body>
                         </html>
                     """);
@@ -502,7 +502,7 @@ namespace TransparentTwitchChatWPF
 
         private void MenuItem_SetDisplayName(object sender, RoutedEventArgs e)
         {
-            var inputWindow = new InputWindow("Window Display Name");
+            var inputWindow = new InputWindow("창 표시 이름");
             inputWindow.Owner = this; // Set the owner to center the dialog over the main window
 
             // ShowDialog() returns a nullable boolean
@@ -511,7 +511,7 @@ namespace TransparentTwitchChatWPF
                 string name = inputWindow.ResponseText.Trim();
                 if (string.IsNullOrEmpty(name))
                 {
-                    MessageBox.Show("Display name cannot be empty.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("표시 이름은 비워 둘 수 없습니다.", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
@@ -565,7 +565,7 @@ namespace TransparentTwitchChatWPF
 
         private void MenuItem_VisitWebsite(object sender, RoutedEventArgs e)
         {
-            ShellHelper.OpenUrl("https://github.com/baffler/Transparent-Twitch-Chat-Overlay/releases");
+            ShellHelper.OpenUrl("https://github.com/moonkyu12/Transparent-Twitch-ChatKR-Overlay/releases");
             e.Handled = true;
         }
 
@@ -625,7 +625,7 @@ namespace TransparentTwitchChatWPF
 
         private void MenuItem_MigrateSettings(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("This will migrate settings from an older version. It will overwrite the current settings for this window.", "Migrate Settings", MessageBoxButton.OKCancel, MessageBoxImage.Information)
+            if (MessageBox.Show("이전 버전의 설정을 마이그레이션합니다. 이 창의 현재 설정을 덮어씁니다.", "설정 마이그레이션", MessageBoxButton.OKCancel, MessageBoxImage.Information)
                == MessageBoxResult.OK)
             {
                 MigrateSettings();
@@ -642,7 +642,7 @@ namespace TransparentTwitchChatWPF
                 return;
             }
 
-            if (MessageBox.Show("This will delete the settings for this window. Are you sure?", "Remove Window", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            if (MessageBox.Show("이 창의 설정이 삭제됩니다. 계속하시겠습니까?", "창 제거", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                 this._mainWindow.RemoveCustomWindow(this.Url);
 
@@ -706,7 +706,7 @@ namespace TransparentTwitchChatWPF
             var isInteractable = AllowInteraction && (_currentMode == WindowDisplayMode.Setup || _isOverlayInteractable);
             if (isInteractable)
             {
-                this.Title = $"{DisplayName} [Interactable]";
+                this.Title = $"{DisplayName} [상호작용 가능]";
                 this.InteractableIcon.Visibility = Visibility.Visible;
             }
             else
@@ -798,28 +798,28 @@ namespace TransparentTwitchChatWPF
                                 // Rename the old file to indicate it has been migrated
                                 File.Move(oldSettingsPath, oldSettingsPath + ".migrated");
                                 // Show a success message to the user
-                                MessageBox.Show("Settings migrated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                                MessageBox.Show("설정이 성공적으로 마이그레이션되었습니다!", "성공", MessageBoxButton.OK, MessageBoxImage.Information);
                             }
                             else
                             {
-                                MessageBox.Show("Old settings file was empty or invalid.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                                MessageBox.Show("이전 설정 파일이 비어 있거나 잘못되었습니다.", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
                             }
                         }
                         catch (Exception ex)
                         {
                             // Show an error message if the migration fails
-                            MessageBox.Show($"Failed to migrate settings: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                            MessageBox.Show($"설정 마이그레이션 실패: {ex.Message}", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
                     else if (File.Exists(oldSettingsMigratedPath))
                     {
                         // Show a warning message if already migrated
-                        MessageBox.Show($"Already migrated settings. File = '{oldFileNameMigrated}'", "Already migrated", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        MessageBox.Show($"이미 마이그레이션된 설정입니다. 파일 = '{oldFileNameMigrated}'", "이미 마이그레이션됨", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
                     else
                     {
                         // Show an error message if the old file wasn't found
-                        MessageBox.Show("Could not find the old settings file to migrate.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("마이그레이션할 이전 설정 파일을 찾을 수 없습니다.", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }

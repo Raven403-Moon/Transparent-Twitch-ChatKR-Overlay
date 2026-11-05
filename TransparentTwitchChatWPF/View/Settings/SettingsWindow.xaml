@@ -1,4 +1,4 @@
-﻿<Window x:Class="TransparentTwitchChatWPF.SettingsWindow"
+<Window x:Class="TransparentTwitchChatWPF.SettingsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -10,7 +10,7 @@
         ui:WindowHelper.UseModernWindowStyle="True"
         ui:ThemeManager.RequestedTheme="Dark"
         ui:TitleBar.ExtendViewIntoTitleBar="False"
-        Title="Settings"
+        Title="설정"
         WindowStyle="ToolWindow"
         Height="550" Width="600" Topmost="True" WindowStartupLocation="CenterScreen" SourceInitialized="Window_SourceInitialized">
     <Grid>
@@ -29,32 +29,32 @@
                 </ListView.ItemContainerStyle>
                 <ListViewItem>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Chat" VerticalAlignment="Center" />
+                        <TextBlock Text="채팅" VerticalAlignment="Center" />
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Name="listItemAppearance">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Name="textBlockAppearance" Text="Appearance" VerticalAlignment="Center" />
+                        <TextBlock Name="textBlockAppearance" Text="모양" VerticalAlignment="Center" />
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="General" VerticalAlignment="Center" />
+                        <TextBlock Text="일반" VerticalAlignment="Center" />
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Connections" VerticalAlignment="Center" />
+                        <TextBlock Text="연결" VerticalAlignment="Center" />
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Widgets" VerticalAlignment="Center" />
+                        <TextBlock Text="위젯" VerticalAlignment="Center" />
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="About" VerticalAlignment="Center" />
+                        <TextBlock Text="정보" VerticalAlignment="Center" />
                     </StackPanel>
                 </ListViewItem>
             </ListView>
@@ -84,16 +84,16 @@
                             VerticalAlignment="Bottom" 
                             Width="170"
                             Margin="0,0,0,5">
-                        <ComboBoxItem Content="NativeChat (Default)" />
-                        <ComboBoxItem Content="Twitch Popout" />
-                        <ComboBoxItem Content="KapChat (Deprecated)" />
-                        <ComboBoxItem Content="Custom URL" />
+                        <ComboBoxItem Content="NativeChat (기본값)" />
+                        <ComboBoxItem Content="Twitch 팝아웃" />
+                        <ComboBoxItem Content="KapChat (지원 중단)" />
+                        <ComboBoxItem Content="사용자 지정 URL" />
                     </ComboBox>
             
                     <Button
                         Name="OKButton"
                         Grid.Column="1"
-                        Content="Save"
+                        Content="저장"
                         Height="32"
                         HorizontalAlignment="Right" 
                         Margin="0,0,5,5"
@@ -105,7 +105,7 @@
                     <Button
                         Name="CancelButton"
                         Grid.Column="2"
-                        Content="Cancel" 
+                        Content="취소" 
                         Height="32" 
                         HorizontalAlignment="Right" 
                         Margin="0,0,5,5"

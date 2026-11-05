@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -55,7 +55,7 @@ public partial class ConnectionSettingsPage : UserControl
     private async void btConnect_Click(object sender, RoutedEventArgs e)
     {
         // Give the user initial info and disable the button to prevent re-clicks.
-        MessageBox.Show("Please check your default browser to authorize the application.", "Twitch Connection", MessageBoxButton.OK, MessageBoxImage.Information);
+        MessageBox.Show("기본 브라우저를 확인하여 애플리케이션을 인증해 주세요.", "Twitch 연결", MessageBoxButton.OK, MessageBoxImage.Information);
         btConnect.IsEnabled = false;
 
         try
@@ -69,12 +69,12 @@ public partial class ConnectionSettingsPage : UserControl
         catch (TimeoutException)
         {
             // Catch specific, expected errors.
-            MessageBox.Show("The connection timed out. Please try again.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show("연결 시간이 초과되었습니다. 다시 시도해 주세요.", "오류", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
         catch (Exception ex)
         {
             // Catch any other unexpected errors.
-            MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show($"예기치 않은 오류가 발생했습니다: {ex.Message}", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
         }
         finally
         {
@@ -85,11 +85,11 @@ public partial class ConnectionSettingsPage : UserControl
 
     private void btDisconnect_Click(object sender, RoutedEventArgs e)
     {
-        lblTwitch.Content = "Not Connected";
+        lblTwitch.Content = "연결되지 않음";
         lblTwitchStatus.Content = "";
         imgTwitch.Source = null;
 
-        TwitchConnectionStatusChanged?.Invoke(new TwitchConnectionStatus(TwitchConnectionStatusState.NotConnected, "Not Connected"));
+        TwitchConnectionStatusChanged?.Invoke(new TwitchConnectionStatus(TwitchConnectionStatusState.NotConnected, "연결되지 않음"));
 
         App.Settings.GeneralSettings.ChannelID = string.Empty;
         App.Settings.GeneralSettings.OAuthToken = string.Empty;
@@ -149,14 +149,14 @@ public partial class ConnectionSettingsPage : UserControl
             var t = await _api.Auth.ValidateAccessTokenAsync(accessToken);
             if (t == null)
             {
-                TwitchConnectionStatusChanged?.Invoke(new TwitchConnectionStatus(TwitchConnectionStatusState.Error, "Auth Token Error"));
+                TwitchConnectionStatusChanged?.Invoke(new TwitchConnectionStatus(TwitchConnectionStatusState.Error, "인증 토큰 오류"));
             }
             else
                 AuthTokenValidatedCallback(t);
         }
         catch (Exception e)
         {
-            TwitchConnectionStatusChanged?.Invoke(new TwitchConnectionStatus(TwitchConnectionStatusState.Error, "Auth Token Error"));
+            TwitchConnectionStatusChanged?.Invoke(new TwitchConnectionStatus(TwitchConnectionStatusState.Error, "인증 토큰 오류"));
             Debug.WriteLine($"{e.Message}\n{e.InnerException}");
             //MessageBox.Show(e.Message, "Validate Auth Token Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
@@ -165,25 +165,25 @@ public partial class ConnectionSettingsPage : UserControl
     private void AuthTokenValidatedCallback(ValidateAccessTokenResponse e)
     {
         TimeSpan timeSpan = TimeSpan.FromSeconds(e.ExpiresIn);
-        string expires = string.Format("{0} Days {1} Hours", timeSpan.Days, timeSpan.Hours);
+        string expires = string.Format("{0}일 {1}시간", timeSpan.Days, timeSpan.Hours);
 
-        string status = "Connected";
+        string status = "연결됨";
         var statusState = TwitchConnectionStatusState.Active;
 
         if (App.Settings.GeneralSettings.RedemptionsEnabled)
         {
             statusState = TwitchConnectionStatusState.Active;
-            status += " (Active)";
+            status += " (활성)";
         }
         else
         {
             statusState = TwitchConnectionStatusState.Inactive;
-            status += " (Inactive)";
+            status += " (비활성)";
         }
 
         TwitchConnectionStatusChanged?.Invoke(new TwitchConnectionStatus(statusState, status));
 
-        lblTwitchStatus.Content = $"Expires: {expires}";
+        lblTwitchStatus.Content = $"만료: {expires}";
     }
 }
 

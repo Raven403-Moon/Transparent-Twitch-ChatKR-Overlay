@@ -6,9 +6,9 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Native Chat &bull; Setup | Transparent Twitch Chat Overlay</title>
-    <meta content="Native Chat by Transparent Twitch Chat Overlay" property="og:title" />
-    <meta content="Native Chat is a static, self-hosted chat overlay for use with Transparent Twitch Chat Overlay." property="og:description" />
+    <title>Native Chat &bull; 설정 | Transparent-Twitch-ChatKR-Overlay</title>
+    <meta content="Native Chat by Transparent-Twitch-ChatKR-Overlay" property="og:title" />
+    <meta content="Native Chat은 Transparent-Twitch-ChatKR-Overlay를 위한 독립형 채팅 오버레이입니다." property="og:description" />
     <meta content="#00D9FF" data-react-helmet="true" name="theme-color" />
     <link rel="icon" type="image/webp" href="img/ttco.webp" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -240,12 +240,12 @@
     <div id="popupOverlay" class="popup-overlay">
         <div id="popupContainer" class="popup-container">
             <div class="popup-header">
-                <h2 id="popupTitle">Title</h2>
+                <h2 id="popupTitle">제목</h2>
             </div>
             <div class="popup-content" id="popupContent">
                 </div>
             <div class="popup-footer">
-                <button class="popup-close" id="popupClose">Close</button>
+                <button class="popup-close" id="popupClose">닫기</button>
             </div>
         </div>
     </div>
@@ -306,18 +306,18 @@
 
         <form name="generator" class="card elevation-3 slideUp">
             <div class="main-section-header">
-                <h3>Channel Settings</h3>
+                <h3>채널 설정</h3>
             </div>
 
             <div class="channel-section form-section">
                 <div class="stacked-inputs" style="padding: 12px;">
                     <div class="form_row">
                         <label for="channel">Twitch</label>
-                        <input type="text" name="channel" required placeholder="Twitch channel name" class="standardized-width" />
+                        <input type="text" name="channel" required placeholder="Twitch 채널 이름" class="standardized-width" />
                     </div>
                     <div class="form_row">
                         <label for="yt-channel">YouTube</label>
-                        <input type="text" name="yt-channel" placeholder="YouTube ID or Handle (Optional)" class="standardized-width" />
+                        <input type="text" name="yt-channel" placeholder="YouTube ID 또는 핸들 (선택 사항)" class="standardized-width" />
                     </div>
                 </div>
             </div>
@@ -325,55 +325,55 @@
             <div class="form-container">
                 <div class="form-section">
                     <div class="section-header">
-                        <h3>Appearance Settings</h3>
+                        <h3>모양 설정</h3>
                     </div>
 
                     <div class="form_table">
                         <div class="form_col" style="align-items: start; flex: 60%;">
                             <div class="form-field">
-                                <label for="size">Text Size</label>
+                                <label for="size">글자 크기</label>
                                 <select name="size" class="standardized-width">
-                                    <option value="1" selected>Small</option>
-                                    <option value="2">Medium</option>
-                                    <option value="3">Large</option>
+                                    <option value="1" selected>작게</option>
+                                    <option value="2">보통</option>
+                                    <option value="3">크게</option>
                                 </select>
                             </div>
                             <div class="form-field">
-                                <label for="emote_scale">Emote Scale</label>
+                                <label for="emote_scale">이모티콘 크기</label>
                                 <select name="emote_scale" class="standardized-width">
-                                    <option value="1" selected>1x</option>
-                                    <option value="2">2x</option>
-                                    <option value="3">3x</option>
+                                    <option value="1" selected>1배</option>
+                                    <option value="2">2배</option>
+                                    <option value="3">3배</option>
                                 </select>
                             </div>
                             <div class="form-field">
-                                <label for="scale" data-tooltip="Scales the entire chat widget down. Can't be previewed below.">Chat Scale</label>
+                                <label for="scale" data-tooltip="채팅 위젯 전체 크기를 조절합니다. 아래 미리보기에는 반영되지 않습니다.">채팅 배율</label>
                                 <select name="scale" class="standardized-width">
-                                    <option value="0.1">0.1x</option>
-                                    <option value="0.2">0.2x</option>
-                                    <option value="0.3">0.3x</option>
-                                    <option value="0.4">0.4x</option>
-                                    <option value="0.5">0.5x</option>
-                                    <option value="0.6">0.6x</option>
-                                    <option value="0.7">0.7x</option>
-                                    <option value="0.8">0.8x</option>
-                                    <option value="0.9">0.9x</option>
-                                    <option value="1" selected>1x</option>
+                                    <option value="0.1">0.1배</option>
+                                    <option value="0.2">0.2배</option>
+                                    <option value="0.3">0.3배</option>
+                                    <option value="0.4">0.4배</option>
+                                    <option value="0.5">0.5배</option>
+                                    <option value="0.6">0.6배</option>
+                                    <option value="0.7">0.7배</option>
+                                    <option value="0.8">0.8배</option>
+                                    <option value="0.9">0.9배</option>
+                                    <option value="1" selected>1배</option>
                                 </select>
                             </div>
                             <div class="form-field">
-                                <label for="height" data-tooltip="Space between text lines.">Line Height</label>
+                                <label for="height" data-tooltip="텍스트 줄 사이의 간격입니다.">줄 간격</label>
                                 <select name="height" class="standardized-width">
-                                    <option value="0">Smallest</option>
-                                    <option value="1">Smaller</option>
-                                    <option value="2">Small</option>
-                                    <option value="3" selected>Medium</option>
-                                    <option value="4">Large</option>
-                                    <option value="5">Largest</option>
+                                    <option value="0">가장 좁게</option>
+                                    <option value="1">더 좁게</option>
+                                    <option value="2">좁게</option>
+                                    <option value="3" selected>보통</option>
+                                    <option value="4">넓게</option>
+                                    <option value="5">가장 넓게</option>
                                 </select>
                             </div>
                             <div class="form-field">
-                                <label for="font">Font</label>
+                                <label for="font">글꼴</label>
                                 <select name="font" class="standardized-width">
                                     <option value="0" selected>Baloo Tammudu</option>
                                     <option value="1">Segoe UI</option>
@@ -387,42 +387,42 @@
                                     <option value="9">Indie Flower</option>
                                     <option value="10">Press Start 2P</option>
                                     <option value="11">Wallpoet</option>
-                                    <option value="12">Custom</option>
+                                    <option value="12">사용자 지정</option>
                                 </select>
                             </div>
                             <div class="form-field">
-                                <label for="custom_font" data-tooltip="The name of any font you have installed or any google font name. Ex: Sour Gummy">Custom Font</label>
-                                <input type="text" name="custom_font" placeholder="Font Name" disabled class="standardized-width" />
+                                <label for="custom_font" data-tooltip="설치된 글꼴 이름이나 Google Fonts 이름을 입력하세요. 예: Sour Gummy">사용자 지정 글꼴</label>
+                                <input type="text" name="custom_font" placeholder="글꼴 이름" disabled class="standardized-width" />
                             </div>
                             <div class="form-field">
-                                <label for="stroke">Text Stroke</label>
+                                <label for="stroke">글자 외곽선</label>
                                 <select name="stroke" class="standardized-width">
-                                    <option value="0">Off</option>
-                                    <option value="1" selected>Fine</option>
-                                    <option value="2">Thick</option>
+                                    <option value="0">끔</option>
+                                    <option value="1" selected>가늘게</option>
+                                    <option value="2">굵게</option>
                                 </select>
                             </div>
                             <div class="form-field">
-                                <label for="shadow">Text Shadow</label>
+                                <label for="shadow">글자 그림자</label>
                                 <select name="shadow" class="standardized-width">
-                                    <option value="0" selected>Off</option>
-                                    <option value="1">Small</option>
-                                    <option value="2">Medium</option>
-                                    <option value="3">Large</option>
+                                    <option value="0" selected>끔</option>
+                                    <option value="1">작게</option>
+                                    <option value="2">보통</option>
+                                    <option value="3">크게</option>
                                 </select>
                             </div>
                             <div class="form-field">
-                                <label for="weight">Text Weight</label>
+                                <label for="weight">글자 두께</label>
                                 <select name="weight" class="standardized-width">
-                                    <option value="1">Thinest</option>
-                                    <option value="2">Thin</option>
-                                    <option value="3">Small</option>
-                                    <option value="4" selected>Default</option>
-                                    <option value="5">Thick</option>
+                                    <option value="1">가장 얇게</option>
+                                    <option value="2">얇게</option>
+                                    <option value="3">약간 얇게</option>
+                                    <option value="4" selected>기본</option>
+                                    <option value="5">두껍게</option>
                                 </select>
                             </div>
                             <div class="form-field compact-dropdown">
-                                <label for="voice">TTS Voice</label>
+                                <label for="voice">TTS 음성</label>
                                 <select name="voice" class="standardized-width">
                                     <option value="Brian" selected>Brian</option>
                                     <option value="Ivy">Ivy</option>
@@ -436,28 +436,28 @@
                                     <option value="Kimberly">Kimberly</option>
                                     <option value="Kendra">Kendra</option>
                                     <option value="Joey">Joey</option>
-                                    <option value="Mizuki">Mizuki (Japanese)</option>
-                                    <option value="Chantal">Chantal (French)</option>
-                                    <option value="Mathieu">Mathieu (French)</option>
-                                    <option value="Maxim">Maxim (Russian)</option>
-                                    <option value="Hans">Hans (German)</option>
-                                    <option value="Raveena">Raveena (Indian)</option>
+                                    <option value="Mizuki">Mizuki (일본어)</option>
+                                    <option value="Chantal">Chantal (프랑스어)</option>
+                                    <option value="Mathieu">Mathieu (프랑스어)</option>
+                                    <option value="Maxim">Maxim (러시아어)</option>
+                                    <option value="Hans">Hans (독일어)</option>
+                                    <option value="Raveena">Raveena (인도)</option>
                                 </select>
                             </div>
                             <div class="form-field message-image-field">
-                                <label for="message_image">SMS Image URLs</label>
-                                <input type="text" name="message_image" placeholder="URLs for SMS corner images comma separated (optional)" class="standardized-width" />
+                                <label for="message_image">SMS 이미지 URL</label>
+                                <input type="text" name="message_image" placeholder="SMS 모서리 이미지 URL (쉼표로 구분, 선택 사항)" class="standardized-width" />
                             </div>
                             <div class="form-field">
-                                <label for="pronoun_color_mode" data-tooltip="Choose how to color pronoun badges">Pronoun Colors</label>
+                                <label for="pronoun_color_mode" data-tooltip="대명사 배지의 색상 방식을 선택합니다">대명사 색상</label>
                                 <select name="pronoun_color_mode" class="standardized-width" disabled>
-                                    <option value="default" selected>Default Gradients</option>
-                                    <option value="single">Single Custom Gradient</option>
-                                    <option value="custom">Custom Per Pronoun</option>
+                                    <option value="default" selected>기본 그라데이션</option>
+                                    <option value="single">단일 사용자 지정 그라데이션</option>
+                                    <option value="custom">대명사별 사용자 지정</option>
                                 </select>
                             </div>
                             <div class="form-field pronoun-color-field" id="single-gradient-field" style="display: none;">
-                                <div class="pronoun-label" style="text-align: center; cursor: pointer;" data-pronoun="single" data-default1="#a8edea" data-default2="#fed6e3" title="Click to reset to default colors">
+                                <div class="pronoun-label" style="text-align: center; cursor: pointer;" data-pronoun="single" data-default1="#a8edea" data-default2="#fed6e3" title="클릭하여 기본 색상으로 초기화">
                                     <span class="pronoun theythem" style="padding: 0.2em 0.5em; border-radius: 0.8em; color: black; font-size:16px;">They/Them</span>
                                 </div>
                                 <div style="display: flex; gap: 5px;">
@@ -478,84 +478,84 @@
                         <div class="form_col" style="align-items: end; flex: 20%;">
                             <div>
                                 <div class="checkbox-row">
-                                    <label for="readable" data-tooltip="Uses an algorithm to make username colors more readable">Readable Colors</label>
+                                    <label for="readable" data-tooltip="알고리즘을 사용하여 사용자 이름 색상의 가독성을 높입니다">가독성 높은 색상</label>
                                     <input type="checkbox" name="readable" id="readable" checked />
                                 </div>
                                 <div class="checkbox-row">
-                                    <label for="animate" data-tooltip="Adds a neat animation for when messages come in">Animate Messages</label>
+                                    <label for="animate" data-tooltip="새 메시지가 도착할 때 애니메이션 효과를 적용합니다">메시지 애니메이션</label>
                                     <input type="checkbox" name="animate" id="animate" checked />
                                 </div>
                                 <div class="checkbox-row">
-                                    <label for="bots" data-tooltip="Show messages from bot accounts">Show bots</label>
+                                    <label for="bots" data-tooltip="봇 계정의 메시지를 표시합니다">봇 표시</label>
                                     <input type="checkbox" name="bots" id="bots" />
                                 </div>
                                 <div class="checkbox-row">
-                                    <label for="commands" data-tooltip="Hide messages starting with !">Hide commands</label>
+                                    <label for="commands" data-tooltip="!로 시작하는 메시지를 숨깁니다">명령어 숨기기</label>
                                     <input type="checkbox" name="commands" id="commands" />
                                 </div>
                                 <div class="checkbox-row">
-                                    <label for="badges" data-tooltip="Hide all badges">Hide badges</label>
+                                    <label for="badges" data-tooltip="모든 배지를 숨깁니다">배지 숨기기</label>
                                     <input type="checkbox" name="badges" id="badges" />
                                 </div>
                                 <div class="checkbox-row">
-                                    <label for="paints" data-tooltip="Use normal Twitch colors instead of 7tv Paints">Hide 7tv Paints</label>
+                                    <label for="paints" data-tooltip="7tv 페인트 대신 일반 Twitch 색상을 사용합니다">7tv 페인트 숨기기</label>
                                     <input type="checkbox" name="paints" id="paints" />
                                 </div>
                                 <div class="checkbox-row">
-                                    <label for="pronouns" data-tooltip="Show user pronouns from pronouns.alejo.io">Show Pronouns</label>
+                                    <label for="pronouns" data-tooltip="pronouns.alejo.io에서 사용자 대명사를 표시합니다">대명사 표시</label>
                                     <input type="checkbox" name="pronouns" id="pronouns" />
                                 </div>
                                 <div class="checkbox-row">
-                                    <label for="colon" data-tooltip="Hide the colon between user and message">Hide Colon</label>
+                                    <label for="colon" data-tooltip="사용자 이름과 메시지 사이의 콜론을 숨깁니다">콜론 숨기기</label>
                                     <input type="checkbox" name="colon" id="colon" />
                                 </div>
                                 <div class="checkbox-row fade-row">
-                                    <label for="fade_bool" data-tooltip="Fades and removes old messages after a set time">Fade Messages</label>
+                                    <label for="fade_bool" data-tooltip="일정 시간이 지난 후 오래된 메시지를 서서히 사라지게 합니다">메시지 페이드아웃</label>
                                     <input type="checkbox" name="fade_bool" id="fade_bool" />
                                     <div class="fade-container">
                                         <input type="text" name="fade" value="60" class="short hidden" />
-                                        <span id="fade_seconds" class="hidden">sec</span>
+                                        <span id="fade_seconds" class="hidden">초</span>
                                     </div>
                                 </div>
                                 <div class="checkbox-row">
-                                    <label for="small_caps">Use Small Caps</label>
+                                    <label for="small_caps">작은 대문자 사용</label>
                                     <input type="checkbox" name="small_caps" id="small_caps" />
                                 </div>
                                 <div class="checkbox-row">
-                                    <label for="invert" data-tooltip="Invert the vertical direction of chat messges">Invert</label>
+                                    <label for="invert" data-tooltip="채팅 메시지의 수직 방향을 반전합니다">채팅 방향 반전</label>
                                     <input type="checkbox" name="invert" id="invert" />
                                 </div>
                                 <div class="checkbox-row">
-                                    <label for="center" data-tooltip="When the message only has emotes, they are bigger">Big When Only Emotes</label>
+                                    <label for="center" data-tooltip="메시지가 이모티콘만 있는 경우 더 크게 표시합니다">이모티콘만 있을 때 크게 표시</label>
                                     <input type="checkbox" name="big_emotes" id="big_emotes" />
                                 </div>
                                 <div class="checkbox-row">
-                                    <label for="center" data-tooltip="Similar to StreamLabs chat widget">Center Theme</label>
+                                    <label for="center" data-tooltip="StreamLabs 채팅 위젯과 유사한 중앙 정렬 테마입니다">중앙 정렬 테마</label>
                                     <input type="checkbox" name="center" id="center" />
                                 </div>
                                 <div class="checkbox-row">
-                                    <label for="disable_tts" data-tooltip="Disable being able to send tts messages">Disable TTS</label>
+                                    <label for="disable_tts" data-tooltip="TTS 메시지 전송 기능을 비활성화합니다">TTS 비활성화</label>
                                     <input type="checkbox" name="disable_tts" id="disable_tts" />
                                 </div>
                                 <div class="checkbox-row">
-                                    <label for="disable_img" data-tooltip="Disable the img chat command">Disable IMG</label>
+                                    <label for="disable_img" data-tooltip="img 채팅 명령어를 비활성화합니다">IMG 비활성화</label>
                                     <input type="checkbox" name="disable_img" id="disable_img" />
                                 </div>
                                 <div class="checkbox-row">
-                                    <label for="sms" data-tooltip="Click for more info">
-                                        <a href="javascript:void(0);" onclick="event.preventDefault(); showPopup('sms-theme')" style="color:var(--primary);">SMS Theme*</a>
+                                    <label for="sms" data-tooltip="자세한 정보를 보려면 클릭하세요">
+                                        <a href="javascript:void(0);" onclick="event.preventDefault(); showPopup('sms-theme')" style="color:var(--primary);">SMS 테마*</a>
                                     </label>
                                     <input type="checkbox" name="sms" id="sms" />
                                 </div>
                                 <div class="checkbox-row">
-                                    <label for="sync" data-tooltip="Click for more info">
-                                        <a href="javascript:void(0);" onclick="event.preventDefault(); showPopup('emote-sync')" style="color:var(--primary);">Disable Emote Sync*</a>
+                                    <label for="sync" data-tooltip="자세한 정보를 보려면 클릭하세요">
+                                        <a href="javascript:void(0);" onclick="event.preventDefault(); showPopup('emote-sync')" style="color:var(--primary);">이모티콘 동기화 비활성화*</a>
                                     </label>
                                     <input type="checkbox" name="sync" id="sync" />
                                 </div>
                                 <div class="checkbox-row">
-                                    <label for="pruning" data-tooltip="Click for more info">
-                                        <a href="javascript:void(0);" onclick="event.preventDefault(); showPopup('message-pruning')" style="color:var(--primary);">Disable Message Pruning*</a>
+                                    <label for="pruning" data-tooltip="자세한 정보를 보려면 클릭하세요">
+                                        <a href="javascript:void(0);" onclick="event.preventDefault(); showPopup('message-pruning')" style="color:var(--primary);">메시지 정리 비활성화*</a>
                                     </label>
                                     <input type="checkbox" name="pruning" id="pruning" />
                                 </div>
@@ -566,17 +566,17 @@
 
                 <div class="form-section" style="padding: 12px;">
                     <div class="section-header">
-                        <h3>Message Filtering</h3>
+                        <h3>메시지 필터링</h3>
                     </div>
 
                     <div class="stacked-inputs message-filtering-section">
                         <div class="form_row">
-                            <label for="regex">Regex Blacklist</label>
-                            <input type="text" name="regex" placeholder="Regex Pattern to Block ex: ^[1-8]$" class="standardized-width" />
+                            <label for="regex">정규식 차단 목록</label>
+                            <input type="text" name="regex" placeholder="차단할 정규식 패턴 (예: ^[1-8]$)" class="standardized-width" />
                         </div>
                         <div class="form_row" style="display: none;">
-                            <label for="blocked_users">Users/Bots Blocked List</label>
-                            <input type="text" name="blocked_users" placeholder="Extra users or bots to hide. Comma separated." class="standardized-width" />
+                            <label for="blocked_users">차단된 사용자/봇 목록</label>
+                            <input type="text" name="blocked_users" placeholder="숨길 사용자 또는 봇 (쉼표로 구분)" class="standardized-width" />
                         </div>
                     </div>
                 </div>
@@ -584,7 +584,7 @@
                 <div id="submit_container" class="elevation-2">
                     <div class="preview">
                         <label>
-                            <a href="javascript:void(0);" onclick="toggleTheme()">Preview</a>
+                            <a href="javascript:void(0);" onclick="toggleTheme()">미리보기</a>
                         </label>
                     </div>
                     <div id="example" style='font-family: "Baloo Tammudu 2", cursive'>
@@ -756,14 +756,14 @@
                         <span class="button-text">Save and Apply</span>
                         <span class="button-icon">➜</span>
                     </button> -->
-                    <span>Press the "Save" button to apply the settings!</span>
+                    <span>설정을 적용하려면 "저장" 버튼을 누르세요!</span>
                 </div>
             </div>
         </form>
 
         <div id="result" class="card elevation-3 hidden">
-            <div id="alert" class="alert-success">Copied to clipboard</div>
-            <h3>Your Overlay URL</h3>
+            <div id="alert" class="alert-success">클립보드에 복사되었습니다</div>
+            <h3>오버레이 URL</h3>
             <input type="text" id="url" readonly />
             <p>
                 ...
@@ -771,11 +771,11 @@
             <div class="button-group">
                 <button id="go-back" class="secondary-button">
                     <span class="button-icon">←</span>
-                    <span class="button-text">Go Back</span>
+                    <span class="button-text">뒤로 가기</span>
                 </button>
                 <button id="reset" class="danger-button">
                     <span class="button-icon">↺</span>
-                    <span class="button-text">Reset</span>
+                    <span class="button-text">초기화</span>
                 </button>
             </div>
         </div>
@@ -783,41 +783,41 @@
 
     <footer>
         <p>
-            Native Chat with &#10084; by
-            <a href="https://github.com/baffler/Transparent-Twitch-Chat-Overlay">Transparent Twitch Chat Overlay</a>
-            <a href="https://github.com/baffler/Transparent-Twitch-Chat-Overlay" target="_blank"><img class="github"
+            Native Chat 제작:
+            <a href="https://github.com/moonkyu12/Transparent-Twitch-ChatKR-Overlay">Transparent-Twitch-ChatKR-Overlay</a>
+            <a href="https://github.com/moonkyu12/Transparent-Twitch-ChatKR-Overlay" target="_blank"><img class="github"
                     src="img/github.png" /></a>
         </p>
         <p>
-            Cyan Chat with &#10084; by
+            Cyan Chat 제작:
             <a href="https://www.johnnycyan.com/">Johnnycyan</a>
             <a href="https://github.com/Johnnycyan/cyan-chat" target="_blank"><img class="github"
                     src="img/github.png" /></a>
         </p>
         <p>
-            jChat (original) with &#10084; by
+            jChat (원작) 제작:
             <a href="mailto:me@giambaj.it">giambaJ</a>
             <a href="https://github.com/giambaJ/jChat" target="_blank"><img class="github" src="img/github.png" /></a>
         </p>
         <p>
-            This application is not affiliated with
-            <a href="https://www.twitch.tv/" target="_blank">Twitch</a>
+            이 애플리케이션은
+            <a href="https://www.twitch.tv/" target="_blank">Twitch</a>와 관련이 없습니다.
         </p>
     </footer>
 
     <div id="emote-sync-content" style="display:none;">
-        <p>Tries to keep all emotes in sync with each other and on the same loop timing.</p>
+        <p>모든 이모티콘을 서로 동기화하고 동일한 반복 타이밍으로 유지하도록 시도합니다.</p>
     </div>
 
     <div id="message-pruning-content" style="display:none;">
-        <p>Automatically removes messages that pass the top of the screen.</p>
-        <p>Increases performance and can make the chat look nicer.</p>
+        <p>화면 상단을 벗어난 메시지를 자동으로 제거합니다.</p>
+        <p>성능을 향상시키고 채팅을 깔끔하게 유지합니다.</p>
     </div>
 
     <div id="sms-theme-content" style="display:none;">
-        <p>SMS-style chat bubbles with custom animations. Messages are taller, so a short fade time (e.g., 5s) is recommended.</p>
-        <p>The bottom-right image is optional, shown only in the preview.</p>
-        <p>Not compatible with 7tv paints, text stroke/shadow, center theme, or mention colors for readability reasons.</p>
+        <p>사용자 지정 애니메이션이 적용된 SMS 스타일 채팅 말풍선입니다. 메시지 높이가 커지므로 짧은 페이드 시간(예: 5초)을 권장합니다.</p>
+        <p>우측 하단 이미지는 선택 사항이며 미리보기에만 표시됩니다.</p>
+        <p>가독성을 위해 7tv 페인트, 텍스트 외곽선/그림자, 중앙 테마 또는 멘션 색상과 호환되지 않습니다.</p>
     </div>
 
 </body>

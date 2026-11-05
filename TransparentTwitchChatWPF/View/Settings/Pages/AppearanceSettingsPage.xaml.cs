@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualBasic.Logging;
+using Microsoft.VisualBasic.Logging;
 using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.Wpf;
 using System;
@@ -90,7 +90,7 @@ public partial class AppearanceSettingsPage : UserControl
         {
             string urlStatus = string.IsNullOrEmpty(url) ? "<Empty>" : url;
             //_logger.LogError(ex, "Failed to navigate to custom chat URL: " + urlStatus);
-            MessageBox.Show($"Cannot navigate to that URL.\nError:{ex.Message}\nUrl: '{urlStatus}'", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show($"해당 URL로 이동할 수 없습니다.\n오류:{ex.Message}\nUrl: '{urlStatus}'", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 
@@ -135,7 +135,7 @@ public partial class AppearanceSettingsPage : UserControl
             }
             catch (JsonException ex)
             {
-                MessageBox.Show($"Error parsing settings: {ex.Message}");
+                MessageBox.Show($"설정 구문 분석 오류: {ex.Message}");
             }
         }
     }
@@ -146,7 +146,7 @@ public partial class AppearanceSettingsPage : UserControl
         if (!e.IsSuccess)
         {
             // Handle initialization failure, e.g., show an error message
-            MessageBox.Show($"WebView2 initialization failed. Error: {e.InitializationException.Message}");
+            MessageBox.Show($"WebView2 초기화 실패. 오류: {e.InitializationException.Message}");
             return;
         }
     }
@@ -186,7 +186,7 @@ public partial class AppearanceSettingsPage : UserControl
         // It's safest to perform UI updates and re-initialization on the UI thread.
         await Dispatcher.InvokeAsync(async () =>
         {
-            MessageBox.Show("The web component crashed and will be reloaded.", "WebView2 Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("웹 구성 요소에 오류가 발생하여 다시 불러옵니다.", "WebView2 오류", MessageBoxButton.OK, MessageBoxImage.Error);
 
             // --- Clean up old instance ---
             if (webView != null)
@@ -217,7 +217,7 @@ public partial class AppearanceSettingsPage : UserControl
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Fatal error: Could not recover the WebView2 component. {ex.Message}", "Recovery Failed", MessageBoxButton.OK, MessageBoxImage.Stop);
+                MessageBox.Show($"치명적인 오류: WebView2 구성 요소를 복구할 수 없습니다. {ex.Message}", "복구 실패", MessageBoxButton.OK, MessageBoxImage.Stop);
             }
         });
     }

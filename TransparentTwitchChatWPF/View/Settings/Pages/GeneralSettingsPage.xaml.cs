@@ -1,4 +1,4 @@
-﻿using NAudio.Wave;
+using NAudio.Wave;
 using System.Windows;
 using System.Windows.Controls;
 using TransparentTwitchChatWPF.Utils;
@@ -115,12 +115,12 @@ public partial class GeneralSettingsPage : UserControl
         if (hotkeyInputToggleBorders.IsCapturing)
         {
             hotkeyInputToggleBorders.StopCapturing();
-            btCaptureHotkeyToggleBorders.Content = "Capture Hotkey";
+            btCaptureHotkeyToggleBorders.Content = "단축키 캡처";
         }
         else
         {
             hotkeyInputToggleBorders.StartCapturing();
-            btCaptureHotkeyToggleBorders.Content = "Set Hotkey";
+            btCaptureHotkeyToggleBorders.Content = "단축키 설정";
         }
     }
 
@@ -130,12 +130,12 @@ public partial class GeneralSettingsPage : UserControl
         if (hotkeyInputToggleInteractable.IsCapturing)
         {
             hotkeyInputToggleInteractable.StopCapturing();
-            btCaptureHotkeyInteractable.Content = "Capture Hotkey";
+            btCaptureHotkeyInteractable.Content = "단축키 캡처";
         }
         else
         {
             hotkeyInputToggleInteractable.StartCapturing();
-            btCaptureHotkeyInteractable.Content = "Set Hotkey";
+            btCaptureHotkeyInteractable.Content = "단축키 설정";
         }
     }
 
@@ -144,12 +144,12 @@ public partial class GeneralSettingsPage : UserControl
         if (hotkeyInputBringToTop.IsCapturing)
         {
             hotkeyInputBringToTop.StopCapturing();
-            btCaptureHotkeyBringToTop.Content = "Capture Hotkey";
+            btCaptureHotkeyBringToTop.Content = "단축키 캡처";
         }
         else
         {
             hotkeyInputBringToTop.StartCapturing();
-            btCaptureHotkeyBringToTop.Content = "Set Hotkey";
+            btCaptureHotkeyBringToTop.Content = "단축키 설정";
         }
     }
 

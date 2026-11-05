@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.Windows;
@@ -124,7 +124,7 @@ namespace TransparentTwitchChatWPF
                 mainWindow.Show();
             }
             catch (Exception ex) {
-                var msg = "An exception occurred On Startup. Note you can click on this message box to focus it, then press Ctrl-C to copy the entire message.\n\n" + ex.Message.ToString();
+                var msg = "시작 중 예외가 발생했습니다. 이 메시지 상자를 클릭하여 포커스를 맞춘 후 Ctrl-C를 누르면 전체 메시지를 복사할 수 있습니다.\n\n" + ex.Message.ToString();
                 if (ex.InnerException != null)
                 {
                     msg += "\n\n" + ex.InnerException.ToString();
@@ -135,7 +135,7 @@ namespace TransparentTwitchChatWPF
                 }
 
                 MessageBox.Show(msg,
-                    "Click on this message box and press Ctrl-C to copy the entire message");
+                    "이 메시지 상자를 클릭하고 Ctrl-C를 눌러 전체 메시지를 복사하세요");
                 Application.Current.Shutdown();
                 return;
             }
@@ -150,22 +150,22 @@ namespace TransparentTwitchChatWPF
 
             jumplist.JumpItems.Add(new JumpTask
             {
-                Title = "Toggle Borders",
-                CustomCategory = "Actions",
+                Title = "테두리 전환",
+                CustomCategory = "동작",
                 Arguments = "/toggleborders"
             });
 
             jumplist.JumpItems.Add(new JumpTask
             {
-                Title = "Show Settings",
-                CustomCategory = "Actions",
+                Title = "설정 표시",
+                CustomCategory = "동작",
                 Arguments = "/settings"
             });
 
             jumplist.JumpItems.Add(new JumpTask
             {
-                Title = "Reset Window",
-                CustomCategory = "Actions",
+                Title = "창 위치/크기 초기화",
+                CustomCategory = "동작",
                 Arguments = "/resetwindow"
             });
 
@@ -192,8 +192,8 @@ namespace TransparentTwitchChatWPF
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            MessageBox.Show("An unhandled exception occurred. Note you can click on this message box to focus it, then press Ctrl-C to copy the entire message.\n\n" + e.ExceptionObject.ToString(),
-                "Click on this message box and press Ctrl-C to copy the entire message");
+            MessageBox.Show("처리되지 않은 예외가 발생했습니다. 이 메시지 상자를 클릭하여 포커스를 맞춘 후 Ctrl-C를 누르면 전체 메시지를 복사할 수 있습니다.\n\n" + e.ExceptionObject.ToString(),
+                "이 메시지 상자를 클릭하고 Ctrl-C를 눌러 전체 메시지를 복사하세요");
             Application.Current.Shutdown();
             return;
         }

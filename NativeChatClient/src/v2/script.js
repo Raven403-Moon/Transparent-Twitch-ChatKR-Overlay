@@ -1985,7 +1985,7 @@ Chat = {
     $(document).prop("title", title + Chat.info.channel);
 
     Chat.load(function () {
-      SendInfoText("Starting Native Chat");
+      SendInfoText("Native Chat 시작 중");
       console.log("Native Chat: Connecting to IRC server...");
       var socket = new ReconnectingWebSocket(
         "wss://irc-ws.chat.twitch.tv",
@@ -2021,7 +2021,7 @@ Chat = {
               console.log("Native Chat: Joined channel #" + Chat.info.channel);
               if (!Chat.info.connected) {
                 Chat.info.connected = true;
-                SendInfoText("Connected to " + Chat.info.channel);
+                SendInfoText(Chat.info.channel + " 채널에 연결됨");
               }
               return;
             case "CLEARMSG":
@@ -2063,7 +2063,7 @@ Chat = {
                 });
                 
                 if (flag) {
-                  SendInfoText("Refreshing emotes...");
+                  SendInfoText("이모티콘을 새로고치는 중...");
                   Chat.loadEmotes(Chat.info.channelID);
                   console.log("Native Chat: Refreshing emotes...");
                   return;
@@ -2988,12 +2988,12 @@ function generateTestMessages(count) {
       });
       
       // Notify user
-      SendInfoText(`Generated ${count} test messages`);
+      SendInfoText(`테스트 메시지 ${count}개가 생성되었습니다`);
     }
   } catch (error) {
     console.error("[Test Messages] Critical error:", error);
     console.error(error.stack);
-    SendInfoText("Error generating test messages");
+    SendInfoText("테스트 메시지 생성 중 오류 발생");
   }
 }
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.Net;
 using System.Text;
@@ -164,7 +164,7 @@ public class TwitchAuthService : ITwitchAuthService
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Authorization Success</title>
+    <title>인증 성공</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, ""Segoe UI"", Roboto, Helvetica, Arial, sans-serif;
@@ -286,21 +286,21 @@ public class TwitchAuthService : ITwitchAuthService
         <div class=""title-container"">
             <span class=""left"">Transparent</span>
             <div class=""stack"">
-                <span>Twitch Chat</span>
+                <span>Twitch Chat KR</span>
             </div>
             <span class=""right"">Overlay</span>
         </div>
 
         <div class=""logo""></div>
-        <h1>Successfully connected to Twitch!</h1>
+        <h1>Twitch에 성공적으로 연결되었습니다!</h1>
         <p>
-            You may now close this tab and return to the application.
+            이제 이 탭을 닫고 애플리케이션으로 돌아가셔도 됩니다.
             <br>
-            You can manage access for this app at any time in your settings.
+            설정에서 언제든지 이 앱의 액세스 권한을 관리할 수 있습니다.
         </p>
         <hr>
         <div class=""footer"">
-            <a href=""https://github.com/baffler/Transparent-Twitch-Chat-Overlay"">github repository</a>
+            <a href=""https://github.com/moonkyu12/Transparent-Twitch-ChatKR-Overlay"">GitHub 저장소</a>
         </div>
     </div>
 </body>

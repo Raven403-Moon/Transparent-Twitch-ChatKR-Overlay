@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="TransparentTwitchChatWPF.View.Settings.WidgetSettingsPage"
+<UserControl x:Class="TransparentTwitchChatWPF.View.Settings.WidgetSettingsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -17,7 +17,7 @@
         <StackPanel Grid.Row="0">
             <Button
                 Name="NewWidgetButton"
-                Content="Create Widget"
+                Content="위젯 생성"
                 Height="32"
                 FontWeight="Bold"
                 HorizontalAlignment="Left" 
@@ -28,11 +28,11 @@
             <TextBlock 
                 Margin="5,10,5,0"
                 TextWrapping="Wrap"
-                Text="To see follows/subs/viewers/etc then you create a widget" />
+                Text="팔로우/구독/시청자 수 등을 표시하려면 위젯을 생성하세요" />
             <TextBlock 
                 Margin="5,5,5,0"
                 TextWrapping="Wrap"
-                Text="For information on how to do that please check the wiki at:" />
+                Text="자세한 방법은 다음 위키를 확인해 주세요:" />
             
             <Label Margin="0,0,0,0">
                 <Hyperlink NavigateUri = "https://github.com/baffler/Transparent-Twitch-Chat-Overlay/wiki"

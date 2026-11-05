@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Collections.Specialized;
@@ -126,9 +126,9 @@ namespace TransparentTwitchChatWPF
         {
             cbHighlightUsers.IsChecked = false;
             cbAllMods.IsEnabled = true;
-            cbAllMods.Content = "Allow all mods";
+            cbAllMods.Content = "모든 매니저 허용";
             cbAllVIPs.IsEnabled = true;
-            cbAllVIPs.Content = "Allow all VIPs";
+            cbAllVIPs.Content = "모든 VIP 허용";
             btnAddUser.IsEnabled = true;
             btnRemoveUser.IsEnabled = true;
             lvAllowedUsernames.IsEnabled = true;
@@ -147,9 +147,9 @@ namespace TransparentTwitchChatWPF
         {
             cbAllowedUsers.IsChecked = false;
             cbAllMods.IsEnabled = true;
-            cbAllMods.Content = "Highlight all mods";
+            cbAllMods.Content = "모든 매니저 강조";
             cbAllVIPs.IsEnabled = true;
-            cbAllVIPs.Content = "Highlight all VIPs";
+            cbAllVIPs.Content = "모든 VIP 강조";
             btnAddUser.IsEnabled = true;
             btnRemoveUser.IsEnabled = true;
             lvAllowedUsernames.IsEnabled = true;

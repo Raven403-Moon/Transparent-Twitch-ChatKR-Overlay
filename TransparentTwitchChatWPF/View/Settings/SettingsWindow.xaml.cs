@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using TransparentTwitchChatWPF.Utils;
@@ -109,21 +109,27 @@ public partial class SettingsWindow : Window
 
             switch (textBlock.Text)
             {
+                case "채팅":
                 case "Chat":
                     SettingsContentControl.Content = _chatSettingsPage;
                     break;
+                case "모양":
                 case "Appearance":
                     SettingsContentControl.Content = _appearanceSettingsPage;
                     break;
+                case "일반":
                 case "General":
                     SettingsContentControl.Content = _generalSettingsPage;
                     break;
+                case "연결":
                 case "Connections":
                     SettingsContentControl.Content = _connectionSettingsPage;
                     break;
+                case "위젯":
                 case "Widgets":
                     SettingsContentControl.Content = _widgetSettingsPage;
                     break;
+                case "정보":
                 case "About":
                     SettingsContentControl.Content = _aboutSettingsPage;
                     break;

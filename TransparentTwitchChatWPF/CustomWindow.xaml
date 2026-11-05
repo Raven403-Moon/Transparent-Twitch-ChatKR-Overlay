@@ -1,4 +1,4 @@
-﻿<Window x:Class="TransparentTwitchChatWPF.CustomWindow"
+<Window x:Class="TransparentTwitchChatWPF.CustomWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -59,70 +59,70 @@
                         <ui:TitleBarButton.ContextMenu>
                             <ContextMenu x:Name="settingsBtnContextMenu" 
                                          ui:ThemeManager.RequestedTheme="Dark">
-                                <MenuItem Header="Zoom Level">
+                                <MenuItem Header="확대/축소 배율">
                                     <MenuItem.Icon>
                                         <Image Source="/assets/images/zoom.png" Width="16" Height="16"
                                                RenderOptions.BitmapScalingMode="HighQuality" />
                                     </MenuItem.Icon>
                                     
-                                    <MenuItem Header="+ Zoom In" Click="MenuItem_ZoomIn" StaysOpenOnClick="True" />
-                                    <MenuItem Header="- Zoom Out" Click="MenuItem_ZoomOut" StaysOpenOnClick="True" />
-                                    <MenuItem Header="Reset" Click="MenuItem_ZoomReset" />
+                                    <MenuItem Header="+ 확대" Click="MenuItem_ZoomIn" StaysOpenOnClick="True" />
+                                    <MenuItem Header="- 축소" Click="MenuItem_ZoomOut" StaysOpenOnClick="True" />
+                                    <MenuItem Header="초기화" Click="MenuItem_ZoomReset" />
                                 </MenuItem>
-                                <MenuItem Header="Opacity Level">
+                                <MenuItem Header="불투명도">
                                     <MenuItem.Icon>
                                         <Image Source="/assets/images/opacity.png" Width="16" Height="16"
                                                RenderOptions.BitmapScalingMode="HighQuality" />
                                     </MenuItem.Icon>
                                     
-                                    <MenuItem Header="+ Increase" Click="MenuItem_IncOpacity" StaysOpenOnClick="True" />
-                                    <MenuItem Header="- Decrease" Click="MenuItem_DecOpacity" StaysOpenOnClick="True" />
-                                    <MenuItem Header="Reset" Click="MenuItem_ResetOpacity" />
+                                    <MenuItem Header="+ 증가" Click="MenuItem_IncOpacity" StaysOpenOnClick="True" />
+                                    <MenuItem Header="- 감소" Click="MenuItem_DecOpacity" StaysOpenOnClick="True" />
+                                    <MenuItem Header="초기화" Click="MenuItem_ResetOpacity" />
                                 </MenuItem>
-                                <MenuItem Header="Settings">
+                                <MenuItem Header="설정">
                                     <MenuItem.Icon>
                                         <Image Source="/assets/images/settings.png" Width="16" Height="16"
                                                RenderOptions.BitmapScalingMode="HighQuality" />
                                     </MenuItem.Icon>
                                     
                                     <MenuItem Name="menuItemCheckboxAllowInteraction"
-                                              Header="Allow Interaction" 
+                                              Header="클릭 상호작용 허용" 
                                               IsCheckable="True" 
                                               Checked="MenuItemInteraction_Checked" 
                                               Unchecked="MenuItemInteraction_Unchecked" />
-                                    <MenuItem Header="Set Display Name" 
+                                    <MenuItem Header="표시 이름 설정" 
                                               Click="MenuItem_SetDisplayName" />
-                                    <MenuItem Header="Copy URL" Click="MenuItem_CopyUrl" />
+                                    <MenuItem Header="URL 복사" Click="MenuItem_CopyUrl" />
                                     <Separator />
-                                    <MenuItem Header="Migrate Settings" Click="MenuItem_MigrateSettings" />
+                                    <MenuItem Header="설정 마이그레이션" Click="MenuItem_MigrateSettings" />
                                 </MenuItem>
-                                <MenuItem Header="Edit Custom CSS" Click="MenuItem_EditCSSClick">
+                                <MenuItem Header="사용자 지정 CSS 편집" Click="MenuItem_EditCSSClick">
                                     <MenuItem.Icon>
                                         <Image Source="/assets/images/edit.png" Width="16" Height="16"
                                                RenderOptions.BitmapScalingMode="NearestNeighbor" />
                                     </MenuItem.Icon>
                                 </MenuItem>
-                                <MenuItem Header="Reload" Click="MenuItem_ReloadClick">
+                                <MenuItem Header="새로고침" Click="MenuItem_ReloadClick">
                                     <MenuItem.Icon>
                                         <Image Source="/assets/images/reload.png" Width="16" Height="16"
                                                 RenderOptions.BitmapScalingMode="HighQuality" />
                                     </MenuItem.Icon>
                                 </MenuItem>
-                                <MenuItem Header="Show Dev Tools" Click="MenuItem_DevToolsClick">
+                                <MenuItem Header="개발자 도구 표시" Click="MenuItem_DevToolsClick">
                                     <MenuItem.Icon>
                                         <Image Source="/assets/images/bug.png" Width="16" Height="16"
                                                RenderOptions.BitmapScalingMode="HighQuality" />
                                     </MenuItem.Icon>
                                 </MenuItem>
                                 <Separator />
-                                <MenuItem Header="GitHub latest release" Click="MenuItem_VisitWebsite">
+                                <MenuItem Header="GitHub 최신 릴리스" Click="MenuItem_VisitWebsite">
                                     <MenuItem.Icon>
                                         <Image Source="/assets/images/github.png" Width="16" Height="16"
                                                RenderOptions.BitmapScalingMode="HighQuality" />
                                     </MenuItem.Icon>
                                 </MenuItem>
                                 <Separator />
-                                <MenuItem Header="Exit Application" Click="MenuItemExitApp_Click">
+                                <MenuItem Header="애플리케이션 종료" Click="MenuItemExitApp_Click">
                                     <MenuItem.Icon>
                                         <Image Source="/assets/images/quit.png" Width="16" Height="16"
                                                RenderOptions.BitmapScalingMode="HighQuality" />
@@ -188,14 +188,14 @@
                     </Border.Effect>
 
                     <StackPanel>
-                        <TextBlock Text="Additional Component Required"
+                        <TextBlock Text="추가 구성 요소 필요"
                            Foreground="White"
                            FontSize="20"
                            FontWeight="SemiBold"
                            HorizontalAlignment="Center"/>
 
                         <TextBlock x:Name="PlaceHolderOverlayText"
-                           Text="To display web content, this application needs the free WebView2 Runtime from Microsoft. Please check the main window for more info."
+                           Text="웹 콘텐츠를 표시하려면 Microsoft의 무료 WebView2 런타임이 필요합니다. 자세한 정보는 메인 창을 확인하세요."
                            Foreground="#DDFFFFFF"
                            FontSize="14"
                            TextWrapping="Wrap"

@@ -80,8 +80,8 @@ function ShowTwitchApiAuthNotice(reason) {
 
     hasShownTwitchApiAuthNotice = true;
 
-    const headline = "Twitch features limited";
-    const details = "Chat still works. Connect or refresh Twitch in Settings > Connections to restore badges, colors, bits, and Twitch API features.";
+    const headline = "Twitch 기능 제한됨";
+    const details = "채팅은 계속 작동합니다. 배지, 색상, 비트 및 Twitch API 기능을 복원하려면 설정 > 연결에서 Twitch를 연결하거나 새로고침하세요.";
 
     console.warn("NativeChat: " + details, reason || "");
 

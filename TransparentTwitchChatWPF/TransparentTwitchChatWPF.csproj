@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<!-- main property group -->
 	<PropertyGroup>
@@ -14,6 +14,9 @@
 		<SelfContained>true</SelfContained>
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+		<Title>Transparent-Twitch-ChatKR-Overlay</Title>
+		<Product>Transparent-Twitch-ChatKR-Overlay</Product>
+		<Description>Transparent-Twitch-ChatKR-Overlay</Description>
 	</PropertyGroup>
 
 	<!-- property group for a specific build configuration -->

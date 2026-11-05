@@ -1,4 +1,4 @@
-﻿using System.Windows;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
 using TransparentTwitchChatWPF.Helpers;
@@ -219,7 +219,7 @@ public partial class MainWindow : Window, BrowserWindow
 
         _logger.LogInformation($"{payloadEvent.UserName} redeemed '{payloadEvent.Reward.Title}' ({payloadEvent.Reward.Cost} points)");
         PushNewChatMessageDispatcherInvoke(
-            $"redeemed '{payloadEvent.Reward.Title}' ({payloadEvent.Reward.Cost} points)",
+            $"'{payloadEvent.Reward.Title}' ({payloadEvent.Reward.Cost} 포인트) 후원",
             payloadEvent.UserName, "#a1b3c4");
 
         if (!string.IsNullOrEmpty(payloadEvent.UserInput))
@@ -236,9 +236,9 @@ public partial class MainWindow : Window, BrowserWindow
         HotkeyManager.Current.Remove("ToggleInteraction");
         HotkeyManager.Current.Remove("BringToTopTimer");
 
-        menuItemToggleBorders.Header = "Toggle Borders";
-        menuItemToggleInteractable.Header = "Toggle Interactable";
-        menuItemBringToTop.Header = "Bring to Top";
+        menuItemToggleBorders.Header = "테두리 전환";
+        menuItemToggleInteractable.Header = "클릭 투과 전환";
+        menuItemBringToTop.Header = "항상 위에 표시";
 
         if (App.Settings.GeneralSettings.ToggleBordersHotkey != null)
         {
@@ -252,7 +252,7 @@ public partial class MainWindow : Window, BrowserWindow
                         App.Settings.GeneralSettings.ToggleBordersHotkey.Modifiers,
                         OnHotKeyToggleBorders);
 
-                    menuItemToggleBorders.Header = $"Toggle Borders ({App.Settings.GeneralSettings.ToggleBordersHotkey.ToString()})";
+                    menuItemToggleBorders.Header = $"테두리 전환 ({App.Settings.GeneralSettings.ToggleBordersHotkey.ToString()})";
                 }
                 catch (Exception)
                 { }
@@ -271,7 +271,7 @@ public partial class MainWindow : Window, BrowserWindow
                         App.Settings.GeneralSettings.ToggleInteractableHotkey.Modifiers,
                         OnHotKeyToggleInteraction);
 
-                    menuItemToggleInteractable.Header = $"Toggle Interactable ({App.Settings.GeneralSettings.ToggleInteractableHotkey.ToString()})";
+                    menuItemToggleInteractable.Header = $"클릭 투과 전환 ({App.Settings.GeneralSettings.ToggleInteractableHotkey.ToString()})";
                 }
                 catch (Exception)
                 { }
@@ -289,7 +289,7 @@ public partial class MainWindow : Window, BrowserWindow
                         App.Settings.GeneralSettings.BringToTopHotkey.Key,
                         App.Settings.GeneralSettings.BringToTopHotkey.Modifiers,
                         OnHotKeyBringToTopTimer);
-                    menuItemBringToTop.Header = $"Bring to Top ({App.Settings.GeneralSettings.BringToTopHotkey.ToString()})";
+                    menuItemBringToTop.Header = $"항상 위에 표시 ({App.Settings.GeneralSettings.BringToTopHotkey.ToString()})";
                 }
                 catch (Exception)
                 { }
@@ -359,12 +359,12 @@ public partial class MainWindow : Window, BrowserWindow
     {
         var installButton = sender as Button;
         installButton.IsEnabled = false; // Disable button to prevent multiple clicks
-        installButton.Content = "Installing...";
+        installButton.Content = "설치 중...";
 
         string installerPath = Path.Combine(AppContext.BaseDirectory, "MicrosoftEdgeWebview2Setup.exe");
         if (!File.Exists(installerPath))
         {
-            MessageBox.Show("The WebView2 installer is missing. Please reinstall the application.", "Error");
+            MessageBox.Show("WebView2 설치 프로그램이 없습니다. 애플리케이션을 다시 설치해 주세요.", "오류");
             return;
         }
 
@@ -374,8 +374,8 @@ public partial class MainWindow : Window, BrowserWindow
             var process = Process.Start(new ProcessStartInfo(installerPath) { UseShellExecute = true });
             await process.WaitForExitAsync();
 
-            installButton.Content = "Installation Complete";
-            PlaceHolderOverlayText.Text = "WebView2 Runtime Installed Successfully! The app will refresh automatically after installation.";
+            installButton.Content = "설치 완료";
+            PlaceHolderOverlayText.Text = "WebView2 런타임이 성공적으로 설치되었습니다! 잠시 후 앱이 자동으로 새로고침됩니다.";
 
             if (_timerCheckWebView2Install == null)
             {
@@ -387,9 +387,9 @@ public partial class MainWindow : Window, BrowserWindow
         }
         catch (Exception ex)
         {
-            MessageBox.Show($"An error occurred during installation: {ex.Message}\n{ex.InnerException}", "Installation Failed");
+            MessageBox.Show($"설치 중 오류가 발생했습니다: {ex.Message}\n{ex.InnerException}", "설치 실패");
             installButton.IsEnabled = true;
-            installButton.Content = "Install WebView2 Runtime";
+            installButton.Content = "WebView2 런타임 설치";
         }
     }
 
@@ -489,7 +489,7 @@ public partial class MainWindow : Window, BrowserWindow
         catch (Exception ex)
         {
             _logger.LogError(ex, "Failed to set virtual host name to folder mapping for WebView2.");
-            MessageBox.Show(this, $"An error occurred while configuring the web environment:\n{ex.Message}", "Configuration Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(this, $"웹 환경을 구성하는 동안 오류가 발생했습니다:\n{ex.Message}", "구성 오류", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 
@@ -500,7 +500,7 @@ public partial class MainWindow : Window, BrowserWindow
         // It's safest to perform UI updates and re-initialization on the UI thread.
         await Dispatcher.InvokeAsync(async () =>
         {
-            MessageBox.Show($"The web component crashed and will now be reloaded.\n'{e.ProcessFailedKind}' Reason: '{e.Reason}'", "WebView2 Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show($"웹 구성 요소에 오류가 발생하여 다시 불러옵니다.\n'{e.ProcessFailedKind}' 원인: '{e.Reason}'", "WebView2 오류", MessageBoxButton.OK, MessageBoxImage.Error);
 
             // --- Clean up the FAILED instance ---
             // Remove the control from the visual tree.
@@ -519,7 +519,7 @@ public partial class MainWindow : Window, BrowserWindow
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Fatal error: Could not recover the WebView2 component. {ex.Message} The application will now close.", "Recovery Failed", MessageBoxButton.OK, MessageBoxImage.Stop);
+                MessageBox.Show($"치명적인 오류: WebView2 구성 요소를 복구할 수 없습니다. {ex.Message} 프로그램이 종료됩니다.", "복구 실패", MessageBoxButton.OK, MessageBoxImage.Stop);
                 Application.Current.Shutdown();
             }
         });
@@ -529,7 +529,7 @@ public partial class MainWindow : Window, BrowserWindow
     {
         if (!e.IsSuccess)
         {
-            MessageBox.Show(GetWindow(this), "Failed to initialize WebView2:\n" + e.InitializationException.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(GetWindow(this), "WebView2 초기화 실패:\n" + e.InitializationException.ToString(), "오류", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 
@@ -585,7 +585,7 @@ public partial class MainWindow : Window, BrowserWindow
                 case "/resetwindow":
                     ResetWindowPosition();
 
-                    if (MessageBox.Show("Show settings folder?", "Settings Folder", MessageBoxButton.YesNo, MessageBoxImage.Question)
+                    if (MessageBox.Show("설정 폴더를 여시겠습니까?", "설정 폴더", MessageBoxButton.YesNo, MessageBoxImage.Question)
                         == MessageBoxResult.Yes)
                     {
                         OpenSettingsFolder();
@@ -753,7 +753,7 @@ public partial class MainWindow : Window, BrowserWindow
         {
             string urlStatus = string.IsNullOrEmpty(url) ? "<Empty>" : url;
             _logger.LogError(ex, "Failed to navigate to custom chat URL: " + urlStatus);
-            MessageBox.Show($"Cannot navigate to that URL.\nError:{ex.Message}\nUrl: '{urlStatus}'", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show($"해당 URL로 이동할 수 없습니다.\n오류:{ex.Message}\nUrl: '{urlStatus}'", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 
@@ -845,7 +845,7 @@ public partial class MainWindow : Window, BrowserWindow
 
     private void MenuItem_VisitWebsite(object sender, RoutedEventArgs e)
     {
-        ShellHelper.OpenUrl("https://github.com/baffler/Transparent-Twitch-Chat-Overlay/releases/latest");
+        ShellHelper.OpenUrl("https://github.com/moonkyu12/Transparent-Twitch-ChatKR-Overlay/releases/latest");
         e.Handled = true;
     }
 
@@ -959,8 +959,8 @@ public partial class MainWindow : Window, BrowserWindow
         {
             _nativeChatFileManager.ForceRestoreDefaults();
             MessageBox.Show(this,
-                "NativeChat files have been restored to defaults.",
-                "Restore Complete",
+                "NativeChat 파일이 기본값으로 복원되었습니다.",
+                "복원 완료",
                 MessageBoxButton.OK,
                 MessageBoxImage.Information);
             if (App.Settings.GeneralSettings.ChatType == (int)ChatTypes.NativeChat)
@@ -970,8 +970,8 @@ public partial class MainWindow : Window, BrowserWindow
         {
             _logger.LogError(ex, "Failed to restore NativeChat defaults.");
             MessageBox.Show(this,
-                $"Failed to restore NativeChat files:\n{ex.Message}",
-                "Error",
+                $"NativeChat 파일 복원 실패:\n{ex.Message}",
+                "오류",
                 MessageBoxButton.OK,
                 MessageBoxImage.Error);
         }
@@ -1046,7 +1046,7 @@ public partial class MainWindow : Window, BrowserWindow
                 {
                     Dispatcher.Invoke(() =>
                     {
-                        this.Title = $"Chat Overlay for {config.Channel}";
+                        this.Title = $"{config.Channel} 채팅 오버레이";
                     });
                 }
             }
@@ -1067,13 +1067,13 @@ public partial class MainWindow : Window, BrowserWindow
     {
         if (string.IsNullOrEmpty(URL))
         {
-            MessageBox.Show("Empty or Invalid URL.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("비어 있거나 유효하지 않은 URL입니다.", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
             return;
         }
 
         if (App.Settings.GeneralSettings.CustomWindows.Contains(URL))
         {
-            MessageBox.Show("That URL already exists as a window.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("해당 URL은 이미 창으로 존재합니다.", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
         }
         else
         {
@@ -1138,8 +1138,8 @@ public partial class MainWindow : Window, BrowserWindow
         {
             if (
             MessageBox.Show(
-                            "Please download and install the WebView2 Runtime to use this app.\nRestart this app after you install.",
-                            "WebView2 Runtime Required",
+                            "이 앱을 사용하려면 WebView2 런타임을 다운로드하여 설치해 주세요.\n설치 후 이 앱을 다시 시작하세요.",
+                            "WebView2 런타임 필요",
                             MessageBoxButton.OK, MessageBoxImage.Error
                             )
                 == MessageBoxResult.OK)
@@ -1313,7 +1313,7 @@ public partial class MainWindow : Window, BrowserWindow
 #else
         _logger.LogInformation("Checking for updates...");
 
-        var mgr = new UpdateManager(new GithubSource("https://github.com/baffler/Transparent-Twitch-Chat-Overlay", null, false));
+        var mgr = new UpdateManager(new GithubSource("https://github.com/moonkyu12/Transparent-Twitch-ChatKR-Overlay", null, false));
 
         try
         {
@@ -1326,7 +1326,7 @@ public partial class MainWindow : Window, BrowserWindow
                 _logger.LogInformation("No updates available.");
                 if (notifyIfNoUpdate)
                 {
-                    MessageBox.Show("You're up to date!", "No Updates", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("최신 버전입니다!", "업데이트 없음", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 return; // no update available
             }
@@ -1373,8 +1373,8 @@ public partial class MainWindow : Window, BrowserWindow
                 fullErrorDetails += "\n\nINNER EXCEPTION:\n" + ex.InnerException.ToString();
             }
 
-            MessageBox.Show("Error checking for updates:\n" + fullErrorDetails, 
-                "Error while Checking for Update", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("업데이트 확인 중 오류 발생:\n" + fullErrorDetails, 
+                "업데이트 확인 오류", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 #endif
     }
@@ -1435,19 +1435,19 @@ public partial class MainWindow : Window, BrowserWindow
         {
             // Handle the case where the chat type isn't supported
             _logger.LogError(ex, "The selected chat type is not supported.");
-            MessageBox.Show("The selected chat type is not supported.", "Error");
+            MessageBox.Show("선택한 채팅 유형은 지원되지 않습니다.", "오류");
         }
         catch (UriFormatException ex)
         {
             // Handle invalid URLs, e.g., from the CustomURL setting
             _logger.LogError(ex, "Invalid URL format.");
-            MessageBox.Show("The custom URL is invalid. Please check the settings.", "Error");
+            MessageBox.Show("사용자 지정 URL이 잘못되었습니다. 설정을 확인해 주세요.", "오류");
         }
         catch (Exception ex)
         {
             // Handle any other exceptions that may occur
             _logger.LogError(ex, "An unexpected error occurred while setting up the browser.");
-            MessageBox.Show("An unexpected error occurred: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("예기치 않은 오류가 발생했습니다: " + ex.Message, "오류", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         if (!success)
@@ -1471,7 +1471,7 @@ public partial class MainWindow : Window, BrowserWindow
     {
         ResetWindowPosition();
 
-        if (MessageBox.Show("Show settings folder?", "Settings Folder", MessageBoxButton.YesNo, MessageBoxImage.Question)
+        if (MessageBox.Show("설정 폴더를 여시겠습니까?", "설정 폴더", MessageBoxButton.YesNo, MessageBoxImage.Question)
             == MessageBoxResult.Yes)
         {
             OpenSettingsFolder();
@@ -1625,7 +1625,7 @@ public partial class MainWindow : Window, BrowserWindow
             var redeem = e.RewardRedeemed.Redemption;
 
             PushNewChatMessageDispatcherInvoke(
-                $"redeemed '{redeem.Reward.Title}' ({redeem.Reward.Cost} points)", // ~ {e.ChannelId}",
+                $"'{redeem.Reward.Title}' ({redeem.Reward.Cost} 포인트) 후원", // ~ {e.ChannelId}",
                 redeem.User.DisplayName, "#a1b3c4");
 
             if (!string.IsNullOrEmpty(redeem.UserInput) && !string.IsNullOrWhiteSpace(redeem.UserInput))

@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 using Microsoft.Web.WebView2.Core;
 using System;
 using System.Collections.Generic;
@@ -39,8 +39,8 @@ public class WebViewConfigurator
             _logger.LogError(ex, "The selected chat type is not currently supported");
 
             MessageBox.Show(
-                "The selected chat type is not currently supported. Please choose a different one in the settings.",
-                "Unsupported Chat Type",
+                "선택한 채팅 유형은 현재 지원되지 않습니다. 설정에서 다른 채팅 유형을 선택하세요.",
+                "지원되지 않는 채팅 유형",
                 MessageBoxButton.OK,
                 MessageBoxImage.Warning
             );

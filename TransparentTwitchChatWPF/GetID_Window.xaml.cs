@@ -1,4 +1,4 @@
-﻿using System.Windows;
+using System.Windows;
 using System.Windows.Navigation;
 using TwitchLib.Api;
 using TransparentTwitchChatWPF.Utils;
@@ -17,12 +17,12 @@ namespace TransparentTwitchChatWPF
         {
             this._username = Username;
             InitializeComponent();
-            this.Title = $"Get Channel ID for '{Username}'";
-            this.lblChannelID.Content = $"Channel ID (for '{Username}'):";
+            this.Title = $"'{Username}' 채널 ID 가져오기";
+            this.lblChannelID.Content = $"'{Username}'의 채널 ID:";
             
             if (string.IsNullOrEmpty(Username))
             {
-                tbChannelID.Text = "(Username field is empty)";
+                tbChannelID.Text = "(사용자 이름이 비어 있습니다)";
                 btnFetchID.IsEnabled = false;
             }
         }
@@ -35,15 +35,15 @@ namespace TransparentTwitchChatWPF
 
         private void btnFetchID_Click(object sender, RoutedEventArgs e)
         {
-            if ((string)btnFetchID.Content == "OK")
+            if ((string)btnFetchID.Content == "확인" || (string)btnFetchID.Content == "OK")
             {
                 DialogResult = true;
             }
             else
             {
-                tbChannelID.Text = "(ID will be populated here)";
+                tbChannelID.Text = "(여기에 ID가 표시됩니다)";
                 btnFetchID.IsEnabled = false;
-                btnFetchID.Content = "Wait...";
+                btnFetchID.Content = "대기 중...";
 
                 
             }

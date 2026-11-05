@@ -1,4 +1,4 @@
-﻿<Window x:Class="TransparentTwitchChatWPF.TextEditorWindow"
+<Window x:Class="TransparentTwitchChatWPF.TextEditorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -11,7 +11,7 @@
         ui:ThemeManager.RequestedTheme="Dark"
         WindowStartupLocation="CenterScreen"
         Topmost="True"
-        Title="TextEditorWindow" Height="450" Width="800">
+        Title="텍스트 편집기" Height="450" Width="800">
     <Grid Background="#222">
         <Grid.RowDefinitions>
             <RowDefinition Height="22"/>
@@ -19,10 +19,10 @@
         </Grid.RowDefinitions>
         
         <Menu Grid.Row="0">
-            <MenuItem Header="File" Height="20">
-                <MenuItem Name="SaveMenuItem" Header="Save" Click="SaveMenuItem_Click" />
-                <MenuItem Name="ExitMenuItem" Header="Save and Exit" Click="ExitMenuItem_Click" />
-                <MenuItem Name="CancelMenuItem" Header="Cancel Changes and Exit" Click="CancelMenuItem_Click" />
+            <MenuItem Header="파일" Height="20">
+                <MenuItem Name="SaveMenuItem" Header="저장" Click="SaveMenuItem_Click" />
+                <MenuItem Name="ExitMenuItem" Header="저장 후 종료" Click="ExitMenuItem_Click" />
+                <MenuItem Name="CancelMenuItem" Header="변경 사항 취소 및 종료" Click="CancelMenuItem_Click" />
             </MenuItem>
         </Menu>
         

@@ -1,4 +1,4 @@
-﻿using NAudio.Wave;
+using NAudio.Wave;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
@@ -361,8 +361,8 @@ public partial class ChatSettingsPage : UserControl
             isActive = true;
         }
 
-        string status = "Connected (Inactive)";
-        if (!isActive) status = "Not Connected";
+        string status = "연결됨 (비활성)";
+        if (!isActive) status = "연결되지 않음";
 
         this.lblTwitchConnected.Content = status;
         this.lblTwitchConnected.Foreground = Brushes.Gray;
@@ -397,8 +397,8 @@ public partial class ChatSettingsPage : UserControl
             isActive = true;
         }
 
-        string status = "Connected (Active)";
-        if (!isActive) status = "Not Connected";
+        string status = "연결됨 (활성)";
+        if (!isActive) status = "연결되지 않음";
 
         this.lblTwitchConnected.Content = status;
         this.lblTwitchConnected.Foreground = isActive ? Brushes.Green : Brushes.Gray;
@@ -457,9 +457,8 @@ public partial class ChatSettingsPage : UserControl
     private void btRestoreNativeChatDefaults_Click(object sender, RoutedEventArgs e)
     {
         var result = MessageBox.Show(
-            "This will overwrite all NativeChat overlay files with the built-in defaults.\n\n" +
-            "Any direct edits you made to those files on disk will be lost.\n\nContinue?",
-            "Restore NativeChat Defaults",
+            "모든 NativeChat 오버레이 파일을 기본 제공 파일로 덮어씁니다.\n\n로컬 디스크에서 직접 수정한 파일 변경 사항은 모두 손실됩니다.\n\n계속하시겠습니까?",
+            "NativeChat 기본값 복원",
             MessageBoxButton.YesNo,
             MessageBoxImage.Warning);
 

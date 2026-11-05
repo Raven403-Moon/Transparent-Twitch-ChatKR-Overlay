@@ -116,15 +116,15 @@ const popup = {
     // Configuration for different popups
     types: {
         'emote-sync': {
-            title: 'Emote Sync',
+            title: '이모티콘 동기화',
             contentId: 'emote-sync-content'
         },
         'message-pruning': {
-            title: 'Message Pruning',
+            title: '메시지 정리',
             contentId: 'message-pruning-content'
         },
         'sms-theme': {
-            title: 'SMS Theme',
+            title: 'SMS 테마',
             contentId: 'sms-theme-content'
         }
     },
@@ -1059,7 +1059,7 @@ function sendSettingsToHost(event) {
             
             // We can update the alert text to be more accurate
             const alertDiv = document.getElementById('alert');
-            alertDiv.textContent = 'Settings Applied!';
+            alertDiv.textContent = '설정이 적용되었습니다!';
             
             // Reuse your existing copy/alert functions to show the message
             copyUrl(); 
@@ -1067,7 +1067,7 @@ function sendSettingsToHost(event) {
 
     } else {
         // This error will appear if you open the HTML file in a regular browser
-        alert("This page must be run inside the Transparent Twitch Chat Overlay application.");
+        alert("이 페이지는 Transparent-Twitch-ChatKR-Overlay 애플리케이션 내부에서 실행되어야 합니다.");
     }
 }
 

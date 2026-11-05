@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,7 +36,7 @@ namespace TransparentTwitchChatWPF
             InitializeComponent();
 
             if (string.IsNullOrEmpty(windowTitle))
-                this.Title = "Text Editor for custom " + textEditorType.ToString();
+                this.Title = "사용자 지정 " + textEditorType.ToString() + " 텍스트 편집기";
             else
                 this.Title = windowTitle;
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
@@ -18,8 +18,8 @@ public static class ShellHelper
         // First, validate the input to prevent basic errors.
         if (string.IsNullOrWhiteSpace(url) || !Uri.IsWellFormedUriString(url, UriKind.Absolute))
         {
-            MessageBox.Show($"The provided URL is not valid: {url}",
-                            "Invalid URL", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show($"제공된 URL이 올바르지 않습니다: {url}",
+                            "잘못된 URL", MessageBoxButton.OK, MessageBoxImage.Error);
             return;
         }
 
@@ -33,14 +33,14 @@ public static class ShellHelper
         catch (Win32Exception winEx)
         {
             // Handle specific OS-level errors, like the user canceling a prompt.
-            MessageBox.Show($"Could not open the website. The system reported an error: {winEx.Message}",
-                            "Operation Failed", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show($"웹사이트를 열 수 없습니다. 시스템 오류: {winEx.Message}",
+                            "작업 실패", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
         catch (Exception ex)
         {
             // Handle any other unexpected errors.
-            MessageBox.Show($"An unexpected error occurred while trying to open the website. Please check that you have a default web browser configured.",
-                            "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show($"웹사이트를 여는 중 예기치 않은 오류가 발생했습니다. 기본 웹 브라우저가 설정되어 있는지 확인하세요.",
+                            "오류", MessageBoxButton.OK, MessageBoxImage.Error);
 
             // Log the full error for debugging purposes.
             Debug.WriteLine($"Failed to open URL '{url}': {ex}");
@@ -57,16 +57,16 @@ public static class ShellHelper
         // Validate the input path.
         if (string.IsNullOrWhiteSpace(folderPath))
         {
-            MessageBox.Show("The folder path provided is empty.",
-                            "Invalid Path", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("제공된 폴더 경로가 비어 있습니다.",
+                            "잘못된 경로", MessageBoxButton.OK, MessageBoxImage.Error);
             return;
         }
 
         // Check if the directory exists before trying to open it.
         if (!Directory.Exists(folderPath))
         {
-            MessageBox.Show($"The folder does not exist at the specified path:\n\n{folderPath}",
-                            "Folder Not Found", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show($"지정된 경로에 폴더가 존재하지 않습니다:\n\n{folderPath}",
+                            "폴더를 찾을 수 없음", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
 
@@ -80,14 +80,14 @@ public static class ShellHelper
         }
         catch (Win32Exception winEx)
         {
-            MessageBox.Show($"Could not open the folder. The system reported an error: {winEx.Message}",
-                            "Operation Failed", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show($"폴더를 열 수 없습니다. 시스템 오류: {winEx.Message}",
+                            "작업 실패", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
         catch (Exception ex)
         {
             // Handle other potential errors, like permission denied.
-            MessageBox.Show($"An unexpected error occurred while trying to open the folder:\n\n{ex.Message}",
-                            "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show($"폴더를 여는 중 예기치 않은 오류가 발생했습니다:\n\n{ex.Message}",
+                            "오류", MessageBoxButton.OK, MessageBoxImage.Error);
             Debug.WriteLine($"Failed to open folder '{folderPath}': {ex}");
         }
     }

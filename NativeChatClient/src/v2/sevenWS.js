@@ -141,7 +141,7 @@ function seven_ws(channel) {
                         if (emoteEvent.d && emoteEvent.d.body) {
                             if (emoteEvent.d.body.pushed && emoteEvent.d.body.pushed.length > 0) {
                                 console.log(`[${channel}] Added: ${emoteEvent.d.body.pushed[0].value.name}`);
-                                SendInfoText(`Added: ${emoteEvent.d.body.pushed[0].value.name}`);
+                                SendInfoText(`추가됨: ${emoteEvent.d.body.pushed[0].value.name}`);
                                 const emoteData = emoteEvent.d.body.pushed[0].value.data.host.files.pop();
                                 var link = `https:${emoteEvent.d.body.pushed[0].value.data.host.url}/${emoteData.name}`;
                                 // if link ends in .gif replace with .webp
@@ -153,7 +153,7 @@ function seven_ws(channel) {
                                 };
                             } else if (emoteEvent.d.body.pulled && emoteEvent.d.body.pulled.length > 0) {
                                 console.log(`[${channel}] Removed: ${emoteEvent.d.body.pulled[0].old_value.name}`);
-                                SendInfoText(`Removed: ${emoteEvent.d.body.pulled[0].old_value.name}`);
+                                SendInfoText(`제거됨: ${emoteEvent.d.body.pulled[0].old_value.name}`);
                                 delete Chat.info.emotes[emoteEvent.d.body.pulled[0].old_value.name];
                             } else if (emoteEvent.d.body.updated && emoteEvent.d.body.updated.length > 0) {
                                 if (emoteEvent.d.body.updated[0].key == "origins") {
@@ -192,13 +192,13 @@ function seven_ws(channel) {
                                         }
                                     }
                                     Chat.loadEmotes(Chat.info.channelID);
-                                    SendInfoText("Emote origin changed")
+                                    SendInfoText("이모티콘 소스가 변경되었습니다")
                                     console.log("Cyan Chat: Emote origin changed, refreshing emotes...");
                                     return
                                 }
                                 
                                 console.log(`[${channel}] Renamed: ${emoteEvent.d.body.updated[0].old_value.name} to ${emoteEvent.d.body.updated[0].value.name}`);
-                                SendInfoText(`Renamed: ${emoteEvent.d.body.updated[0].old_value.name} to ${emoteEvent.d.body.updated[0].value.name}`);
+                                SendInfoText(`이름 변경됨: ${emoteEvent.d.body.updated[0].old_value.name} -> ${emoteEvent.d.body.updated[0].value.name}`);
                                 delete Chat.info.emotes[emoteEvent.d.body.updated[0].old_value.name];
                                 const emoteData = emoteEvent.d.body.updated[0].value.data.host.files.pop();
                                 var link = `https:${emoteEvent.d.body.updated[0].value.data.host.url}/${emoteData.name}`;
@@ -219,7 +219,7 @@ function seven_ws(channel) {
                         var newEmoteSetName = msg.d.body.updated[0].value[0].value.name
                         var newEmoteSetID = msg.d.body.updated[0].value[0].value.id
                         var actor = msg.d.body.actor.display_name
-                        SendInfoText(`${actor} changed the Emote Set to "${newEmoteSetName}"`)
+                        SendInfoText(`${actor} 님이 이모티콘 세트를 "${newEmoteSetName}"(으)로 변경했습니다`)
                         // Unsubscribe from the current emote set events for the channel
                         conn.send(JSON.stringify({
                             op: 36, // unsubscribe opcode

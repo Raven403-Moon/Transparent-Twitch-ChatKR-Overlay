@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -37,7 +37,7 @@ public class TwitchService : IHostedService, IDisposable
     public event EventHandler<ChannelPointsCustomRewardRedemptionArgs> ChannelPointsRewardRedeemed;
 
     public string AuthTokenExpiration { get; private set; } = "...";
-    public string TwitchConnectionStatus { get; private set; } = "Not Connected";
+    public string TwitchConnectionStatus { get; private set; } = "연결되지 않음";
     public BitmapImage ProfileImage { get; private set; }
 
     private bool _isEventSubInit = false;
@@ -139,7 +139,7 @@ public class TwitchService : IHostedService, IDisposable
         catch (Exception e)
         {
             //Growl.Error("Error returned: " + e.Message);
-            Growl.Warning("The Twitch connection may be invalid or expired, try reconnecting in settings.");
+            Growl.Warning("Twitch 연결이 유효하지 않거나 만료되었을 수 있습니다. 설정에서 다시 연결해 보세요.");
         }
     }
 
@@ -151,7 +151,7 @@ public class TwitchService : IHostedService, IDisposable
         string userID = e.Users[0].Id;
         string profileImageUrl = e.Users[0].ProfileImageUrl;
 
-        TwitchConnectionStatus = $"Connected as {userName} ({userID})";
+        TwitchConnectionStatus = $"{userName} ({userID}) 계정으로 연결됨";
         ProfileImage = ImageHelpers.LoadFromUrl(profileImageUrl);
 
         App.Settings.GeneralSettings.ChannelID = userID;
@@ -176,13 +176,13 @@ public class TwitchService : IHostedService, IDisposable
             }
             else
             {
-                Growl.Warning("Could not validate the access token. The Twitch connection may need to be reconnected in settings.");
+                Growl.Warning("액세스 토큰을 확인할 수 없습니다. 설정에서 Twitch 연결을 다시 시도해야 할 수 있습니다.");
             }
         }
         catch (Exception e)
         {
             //Growl.Error("Error returned: " + e.Message);
-            Growl.Warning("Auth token invalid. The Twitch connection may be expired, try reconnecting in settings.");
+            Growl.Warning("인증 토큰이 유효하지 않습니다. Twitch 연결이 만료되었을 수 있으니 설정에서 다시 연결해 보세요.");
         }
     }
 
@@ -191,8 +191,8 @@ public class TwitchService : IHostedService, IDisposable
         _logger.LogInformation("AuthTokenValidatedCallback");
 
         TimeSpan timeSpan = TimeSpan.FromSeconds(e.ExpiresIn);
-        string expires = string.Format("{0} Days {1} Hours", timeSpan.Days, timeSpan.Hours);
-        AuthTokenExpiration = "Expires in: " + expires;
+        string expires = string.Format("{0}일 {1}시간", timeSpan.Days, timeSpan.Hours);
+        AuthTokenExpiration = "만료까지: " + expires;
 
         AccessTokenValidated?.Invoke(this, new AccessTokenValidatedEventArgs
         {
@@ -214,13 +214,13 @@ public class TwitchService : IHostedService, IDisposable
         if (string.IsNullOrEmpty(App.Settings.GeneralSettings.ChannelID))
         {
             _logger.LogWarning("Channel ID is not set in App.Settings.GeneralSettings. Cannot initialize EventSub.");
-            Growl.Warning("Please setup the Twitch Connection in settings before enabling EventSub.");
+            Growl.Warning("EventSub을 활성화하기 전에 설정에서 Twitch 연결을 구성하세요.");
             return;
         }
         if (string.IsNullOrEmpty(App.Settings.GeneralSettings.OAuthToken))
         {
             _logger.LogWarning("OAuth Token is not set in App.Settings.GeneralSettings. Cannot initialize EventSub.");
-            Growl.Warning("Please setup the Twitch Connection in settings before enabling EventSub.");
+            Growl.Warning("EventSub을 활성화하기 전에 설정에서 Twitch 연결을 구성하세요.");
             return;
         }
 
@@ -287,7 +287,7 @@ public class TwitchService : IHostedService, IDisposable
     private async Task OnWebsocketConnected(object sender, WebsocketConnectedArgs e)
     {
         _logger.LogInformation($"Websocket {_eventSubWebsocketClient.SessionId} connected!");
-        Growl.Info("Twitch EventSub connection established successfully.");
+        Growl.Info("Twitch EventSub 연결이 성공적으로 설정되었습니다.");
 
         if (!e.IsRequestedReconnect)
         {
@@ -369,13 +369,13 @@ public class TwitchService : IHostedService, IDisposable
         _logger.LogWarning($"[Twitch EventSub] Websocket {_eventSubWebsocketClient.SessionId} failed to reconnect after {MaxReconnectAttempts} attempts. Stopping retry efforts for this disconnection event.");
         // TODO: At this point, notify the user, log a more critical error, or transition to an offline state.
 
-        Growl.Error("Twitch EventSub connection lost. Please check your internet connection or Twitch Connection settings.");
+        Growl.Error("Twitch EventSub 연결이 끊어졌습니다. 인터넷 연결 또는 Twitch 연결 설정을 확인하세요.");
     }
 
     private async Task OnWebsocketReconnected(object sender, EventArgs e)
     {
         _logger.LogInformation($"Websocket {_eventSubWebsocketClient.SessionId} reconnected");
-        Growl.Info("Twitch EventSub connection re-established successfully.");
+        Growl.Info("Twitch EventSub 연결이 성공적으로 다시 설정되었습니다.");
     }
 
     private async Task OnErrorOccurred(object sender, ErrorOccuredArgs e)
@@ -383,7 +383,7 @@ public class TwitchService : IHostedService, IDisposable
         //LogService.Instance.ChannelChatStatus.IsConnected = true;
 
         _logger.LogInformation($"Websocket {_eventSubWebsocketClient.SessionId} - Error occurred!\n{e.Message}\n{e.Exception}");
-        Growl.Error($"Twitch EventSub Error: {e.Message}");
+        Growl.Error($"Twitch EventSub 오류: {e.Message}");
     }
 
     // --- Cleanup Methods -------------------------------------------------------------
@@ -401,7 +401,7 @@ public class TwitchService : IHostedService, IDisposable
         App.Settings.Persist();
 
         // Update the UI state
-        TwitchConnectionStatus = "Not Connected";
+        TwitchConnectionStatus = "연결되지 않음";
         AuthTokenExpiration = "...";
         ProfileImage = null; // Or a default image
 

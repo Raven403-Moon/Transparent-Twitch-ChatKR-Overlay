@@ -1,3 +1,44 @@
+Transparent-Twitch-ChatKR-Overlay
+================================================================================
+
+[원작자 정보 / Original Author]
+- 원작자: baffler
+- 원본 프로젝트: Transparent Twitch Chat Overlay
+- 원본 저장소: https://github.com/baffler/Transparent-Twitch-Chat-Overlay
+- Copyright (C) 2017-2024 baffler
+
+[수정 공지 / Modification Notice]
+- 프로젝트 저장소: https://github.com/moonkyu12/Transparent-Twitch-ChatKR-Overlay
+- 본 프로그램은 baffler의 Transparent Twitch Chat Overlay를 바탕으로 수정한 파생 저작물(Modified Version)입니다.
+- 수정 연도: 2026년
+- 수정 내역:
+  * 전체 UI 및 설정 화면 한국어 번역
+  * 다이얼로그, 시스템 알림, 오류 메시지 한국어화
+  * 웹 오버레이 클라이언트(NativeChat) 한국어화
+  * 프로젝트 명칭을 Transparent-Twitch-ChatKR-Overlay로 변경
+  * 업데이트 및 저장소 주소를 https://github.com/moonkyu12/Transparent-Twitch-ChatKR-Overlay 로 설정
+  * 문서 및 사용 안내 한국어화
+  * GPLv3 제5조(Conveying Modified Source Versions)에 따른 수정 고지 및 원작자 표시 적용
+- This program is a modified version of Transparent Twitch Chat Overlay by baffler.
+- Modifications made in 2026 include Korean localization of the user interface,
+  settings, dialogs, error messages, web overlay client, documentation, and repository link updates.
+
+[라이선스 고지 / License Notice]
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+================================================================================
+
                     GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 

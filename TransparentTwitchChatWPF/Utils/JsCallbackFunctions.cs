@@ -1,4 +1,4 @@
-﻿using NAudio;
+using NAudio;
 using NAudio.Wave;
 using System;
 using System.Collections.Generic;
@@ -63,7 +63,7 @@ public class JsCallbackFunctions : IDisposable
         }
         catch (Exception ex)
         {
-            MessageBox.Show($"Error loading audio file: {_mediaFile}\n\n{ex.Message}", "File Load Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show($"오디오 파일을 불러오는 중 오류가 발생했습니다: {_mediaFile}\n\n{ex.Message}", "파일 로드 오류", MessageBoxButton.OK, MessageBoxImage.Error);
             _audioFileReader = null; // Ensure reader is null if loading fails
         }
     }

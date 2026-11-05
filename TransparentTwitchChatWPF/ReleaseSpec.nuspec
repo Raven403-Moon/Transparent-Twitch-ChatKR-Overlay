@@ -3,15 +3,15 @@
   <metadata>
     <id>TransparentTwitchChatOverlay</id>
     <version>0.0.0</version>
-    <title>Transparent Twitch Chat Overlay</title>
-    <authors>baffler</authors>
+    <title>Transparent-Twitch-ChatKR-Overlay</title>
+    <authors>baffler, Transparent-Twitch-ChatKR-Overlay</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">GPL-3.0-only</license>
     <!-- <icon>icon.png</icon> -->
-    <projectUrl>https://github.com/baffler/Transparent-Twitch-Chat-Overlay</projectUrl>
-    <description>Application for Windows that will display Twitch chat on top of a windowed or borderless windowed game.</description>
-    <releaseNotes>Latest version</releaseNotes>
-    <copyright>2024</copyright>
+    <projectUrl>https://github.com/moonkyu12/Transparent-Twitch-ChatKR-Overlay</projectUrl>
+    <description>창 모드 또는 테두리 없는 창 모드 게임 위에 Twitch 채팅을 표시하는 Windows용 애플리케이션입니다. baffler의 Transparent Twitch Chat Overlay를 기반으로 한국어화 및 수정한 버전입니다.</description>
+    <releaseNotes>최신 버전</releaseNotes>
+    <copyright>Copyright (C) 2017-2024 baffler, 2026 Transparent-Twitch-ChatKR-Overlay</copyright>
 	<dependencies>
 		<group targetFramework=".NETFramework4.5" />
 	</dependencies>
